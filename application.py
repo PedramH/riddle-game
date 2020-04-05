@@ -151,7 +151,8 @@ def level2_post():
         if current_user.state < this_level_number:
             current_user.state = this_level_number
             db.session.commit()
-        return redirect(url_for(this_level))
+        #return redirect(url_for(this_level))
+        return render_template("msg.html", title='Correct!',msg="خیلی خوش گذشت",link=url_for(this_level))
     else:
         flash('نه! جواب اشتباه بود. دوباره سعی کن!')
         return redirect(url_for(prev_level))

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <h1>{% block title %}{{ pagetitle }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<h1 class="title is-3 rtl iransanse">
+  {{ msg }}
+</h1>
+
+<div class="column is-2 is-offset-5">
+    <div class="box custom-card">
+        <button class="button is-block is-info is-medium rtl iransanse"><a class="iransanse " href="{{ link }}">مرحله بعد</a></button>
+    </div>
+</div>
+
+
+<!---<a class="iransanse " href="{{ link }}">مرحله بعد</a>--->
+{% endblock %}
