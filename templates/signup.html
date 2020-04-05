@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block header %}
+  <h1>{% block title %}{{ pagetitle }}{% endblock %}</h1>
+{% endblock %}
+
 {% block content %}
 <div class="column is-4 is-offset-4">
     <h3 class="title">Sign Up</h3>

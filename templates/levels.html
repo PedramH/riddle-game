@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <h1>{% block title %}{{ pagetitle }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    <div class='card equal-height custom-card'>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-warning rtl iransanse">
+            {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <div class='card-content is-flex is-horizontal-center'>
+          <figure class='image is-squre'><img src='{{ imageurl }}'></figure>
+        </div>
+    </div>
+    <form method="POST" action="{{ formaction }}">
+        <div class="field">
+            <div class="control">
+                <input class="input is-medium" name="answer" placeholder="answer"  autocomplete="off">
+            </div>
+        </div>
+        <button class="button is-block is-info is-medium is-fullwidth">Submit</button>
+    </form>
+    {{ clue | safe}}
+</div>
+{% endblock %}

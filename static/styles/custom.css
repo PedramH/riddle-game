@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'IRANSansWeb';
+    font-style: normal;
+    font-weight: 600;
+    src: url("/static/fonts/IRANSansWeb(FaNum).woff") format("woff"), url("/static/fonts/IRANSansWeb(FaNum).ttf") format("truetype");
+
+}
+.iransanse {
+    font-family: IRANSansWeb;
+}
+
+.rtl {
+    direction: rtl !important;
+}
+
+.is-horizontal-center {
+    justify-content: center;
+
+}
+
+.custom-card {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.trcolor {
+    color:#00d1b2 !important;
+}
+
+.navbar-rtl{
+    margin-right: auto;
+    margin-left: 0;
+ }

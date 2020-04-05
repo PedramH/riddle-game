@@ -5,30 +5,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flask Auth Example</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/custom.css') }}">
 </head>
 
 <body>
     <section class="hero is-primary is-fullheight">
 
         <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
+            <nav class="navbar navbar-rtl rtl">
+                <div class="container iransanse">
 
-                    <div id="navbarMenuHeroA" class="navbar-menu">
+                    <div id="navbarMenuHeroA" class="navbar-menu navbar-rtl rtl">
                         <div class="navbar-end">
                             <a href="{{ url_for('index') }}" class="navbar-item">
-                                Home
+                                صفحه اصلی
                             </a>
-                            <a href="{{ url_for('login') }}" class="navbar-item">
-                                Login
+                            <a href="{{ url_for('level1') }}" class="navbar-item">
+                                شروع
                             </a>
-                            <a href="{{ url_for('signup') }}" class="navbar-item">
-                                Sign Up
+                            <a href="{{ url_for('resume_game') }}" class="navbar-item">
+                                ادامه بازی
                             </a>
                             <a href="{{ url_for('logout') }}" class="navbar-item">
-                                Logout
+                                خروج
                             </a>
                         </div>
                     </div>
