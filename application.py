@@ -1,3 +1,4 @@
+import datetime
 from flask import Flask , render_template, redirect , url_for, request , flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager , login_required, current_user , UserMixin, login_user , logout_user
@@ -28,6 +29,11 @@ class User(UserMixin,db.Model):
     name = db.Column(db.String(1000))
     state = db.Column(db.Integer())
 
+def log_input(inputstr):
+    f = open("log.txt", "a")
+    currentDT = datetime.datetime.now()
+    f.write(f"[{str(currentDT)}] - {current_user.name} - {current_user.state} : {inputstr} \n")
+    f.close()
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -107,6 +113,17 @@ def resume_game():
     page = f"level{level}"
     return redirect(url_for(page))
 
+@app.route('/leaderboard')
+@login_required
+def leader_board():
+    """ Show the users current level """
+    users_data = []
+    users = User.query.all()
+    for user in users:
+        users_data.append((user.name,user.state))
+
+    return render_template('leaderboard.html',data=users_data)
+
 
 # ---------------------------------------------------------Riddle Pages------------------------------------------------
 # ----------------------------------------------------------- Level1 --------------------------------------------------
@@ -146,8 +163,9 @@ def level2_post():
     prev_level_answer = 'level1pass'
     prev_level = 'level1'
     this_level = 'level2'
-    asnwer = normalize_string(request.form.get("answer"))
-    if asnwer == prev_level_answer:
+    answer = normalize_string(request.form.get("answer"))
+    log_input(answer)
+    if answer == prev_level_answer:
         if current_user.state < this_level_number:
             current_user.state = this_level_number
             db.session.commit()
@@ -178,8 +196,9 @@ def level3_post():
     prev_level_answer = 'level2pass'
     prev_level = 'level2'
     this_level = 'level3'
-    asnwer = normalize_string(request.form.get("answer"))
-    if asnwer == prev_level_answer:
+    answer = normalize_string(request.form.get("answer"))
+    log_input(answer)
+    if answer == prev_level_answer:
         if current_user.state < this_level_number:
             current_user.state = this_level_number
             db.session.commit()
@@ -209,8 +228,9 @@ def level4_post():
     prev_level_answer = 'level3pass'
     prev_level = 'level3'
     this_level = 'level4'
-    asnwer = normalize_string(request.form.get("answer"))
-    if asnwer == prev_level_answer:
+    answer = normalize_string(request.form.get("answer"))
+    log_input(answer)
+    if answer == prev_level_answer:
         if current_user.state < this_level_number:
             current_user.state = this_level_number
             db.session.commit()
@@ -240,8 +260,9 @@ def level5_post():
     prev_level_answer = 'level4pass'
     prev_level = 'level4'
     this_level = 'level5'
-    asnwer = normalize_string(request.form.get("answer"))
-    if asnwer == prev_level_answer:
+    answer = normalize_string(request.form.get("answer"))
+    log_input(answer)
+    if answer == prev_level_answer:
         if current_user.state < this_level_number:
             current_user.state = this_level_number
             db.session.commit()

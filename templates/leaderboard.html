@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block header %}
+  <h1>{% block title %}{{ pagetitle }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<table class="table is-bordered ">
+<thead>
+    <tr>
+      <th>User Name</th>
+      <th>User State</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for uname, ustate in data %}
+    <tr>
+        <th>{{ uname }}</th>
+        <th>{{ ustate }}</th>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+{% endblock %}
