@@ -10,7 +10,8 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="notification is-warning rtl iransanse">
-            {{ messages[0] }}
+                <button class="delete"></button>
+                {{ messages[0] }}
             </div>
         {% endif %}
         {% endwith %}

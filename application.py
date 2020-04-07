@@ -32,7 +32,7 @@ class User(UserMixin,db.Model):
 def log_input(inputstr):
     f = open("log.txt", "a")
     currentDT = datetime.datetime.now()
-    f.write(f"[{str(currentDT)}] - {current_user.name} - {current_user.state} : {inputstr} \n")
+    f.write(f"{str(currentDT)};{current_user.name};{current_user.state};{inputstr} \n")
     f.close()
 
 @login_manager.user_loader
@@ -123,6 +123,19 @@ def leader_board():
         users_data.append((user.name,user.state))
 
     return render_template('leaderboard.html',data=users_data)
+
+@app.route('/log')
+@login_required
+def user_input_log():
+    """ Show the users inputs """
+    f = open('log.txt', 'r') 
+    Lines = f.readlines() 
+    data = []
+    for line in Lines:
+        data.append(line.strip().split(";"))
+        print (line)
+    
+    return render_template('showlog.html',data=data)
 
 
 # ---------------------------------------------------------Riddle Pages------------------------------------------------

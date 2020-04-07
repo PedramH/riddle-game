@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block header %}
+  <h1>{% block title %}{{ pagetitle }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="table-container">
+    <table class="table is-bordered ">
+        <thead>
+            <tr>
+                <th>time stamp</th>
+                <th>username</th>
+                <th>level</th>
+                <th>answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for timestamp, username, level, input in data %}
+            <tr>
+                <th>{{ timestamp }}</th>
+                <th>{{ username }}</th>
+                <th>{{ level }}</th>
+                <th>{{ input }}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
